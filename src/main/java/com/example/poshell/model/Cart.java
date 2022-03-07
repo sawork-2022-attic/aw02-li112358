@@ -11,7 +11,27 @@ public class Cart {
     private List<Item> items = new ArrayList<>();
 
     public boolean addItem(Item item) {
-        return items.add(item);
+        int k = items.size();
+        for(int i = 0; i < items.size(); i++){
+            int c = items.get(i).compareTo(item);
+            if(c < 0){
+                k = i;
+                break;
+            }
+            else if(c == 0) {
+                if(items.get(i).add(item)){
+                    if(items.get(i).isEmpty()){
+                       items.remove(i);
+                    }
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }
+        }
+        if(!item.isEmpty())items.add(k, item);
+        return true;
     }
 
     @Override

@@ -1,48 +1,11 @@
-# POS in Shell
+软件分层系统发展历程：
 
-The demo shows a simple POS system with command line interface. 
+①软件设计发展：初始状态硬件设计基于解决某个具体问题，处理不同问题的硬件无法通用。之后，分离出硬件和程序（汇编），硬件用于解决通用基础问题，为程序提供服务；程序使用算法调用硬件运算，用于解决具体问题，不同问题的解决只需要编写不同的程序即可，不需要额外设计制造硬件。
 
-To run
+②发展-操作系统软件：在硬件和程序（汇编）的基础上，根据程序所共有的、稳定的成分--计算资源管理，将一部分程序（汇编）负责的与系统硬件密切相关的功能统一由另一种特殊设计的程序（操作系统）进行集中管理，从而分离出供给用户使用的程序--应用程序。
 
-```shell
-mvn clean spring-boot:run
-```
+③发展--数据库软件：引进数据管理方面内容，应用程序共性成分--数据管理分离出来由数据库管理系统进行管理，直接提供给用户使用软件--应用软件。
 
-Currently, it implements three commands which you can see using the `help` command.
+④发展--中间件软件：由于互联网的存在，应用软件功能越来越复杂，其使用不再局限于本地运行，借助于互联网，将软件的共性成分--资源管理和服务分离出来，产生中间件（应用服务器）。应用服务器负责软件运行数据的管理，用户只需要接收软件运行结果的展示。
 
-```shell
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
- :: Spring Boot ::                (v2.5.7)
- 
-shell:>help
-AVAILABLE COMMANDS
-
-Built-In Commands
-        clear: Clear the shell screen.
-        exit, quit: Exit the shell.
-        help: Display help about available commands.
-        history: Display or save the history of previously run commands
-        script: Read and execute commands from a file.
-        stacktrace: Display the full stacktrace of the last error.
-
-Pos Command
-        a: Add a Product to Cart
-        n: New Cart
-        p: List Products
-```
-
-Everytime a customer come to make a purchase, use `n` to create a new cart and then use `a ${productid} ${amount}` to add a product to the cart.
-
-Please make the POS system robust and fully functional by implementing more commands, for instance, print/empty/modify cart.
-
-Implementing a PosDB with real database is very much welcome. 
-
-Please use asciinema (https://asciinema.org) to record a demo and submit the url in QQ group. 
-
-And please elaborate your understanding in layered systems via this homework in your README.md.
-
+整个计算机分层系统为了控制软件复杂度提取软件的共性成分而沉淀下来的一层软件，屏蔽系统底层的复杂度，在高层保持复杂度的相对稳定。

@@ -13,4 +13,24 @@ public class Item {
     public String toString(){
         return product.toString() +"\t" + amount;
     }
+
+    public int compareTo(Item item){
+        return product.compareTo(item.product);
+    }
+
+    public boolean add(Item item){
+        int tmp = amount + item.amount;
+        if(tmp >= 0){
+            amount = tmp;
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public boolean isEmpty(){
+        return amount <= 0;
+    }
+
 }

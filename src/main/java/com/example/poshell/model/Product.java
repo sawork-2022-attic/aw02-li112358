@@ -15,4 +15,8 @@ public class Product {
         return getId() + "\t" + getName() + "\t" + getPrice();
     }
 
+    public int compareTo(Product product){
+        return id.compareTo(product.id);
+    }
+
 }
